@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Boer Piets kazen account</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" th:href="@{/w3.css}" />
+	<link rel="stylesheet" th:href="@{/styles.css}" />
+</head>
+<body>
+	<!-- Sidebar -->
+	<nav th:insert="layout.html :: sidebar-account"></nav>
+	
+	<header class="w3-top">
+		<div th:insert="layout.html :: header-account"></div>
+		<nav th:insert="layout.html :: navbar"></nav>
+	</header>
+		
+	<div style="margin-left:12%">
+	
+	<main class="w3-container w3-auto w3-padding-128" style="max-width:900px;">
+		<h4>Rommel maar een beetje met accounts</h4>
+		<br />
+		
+		<!-- Tabel die alle accounts weergeeft -->
+		<table class="w3-table-all w3-card">
+			<tr>
+				<th>Id</th>
+				<th>Gebruikersnaam</th>
+				<th>Accounttype</th>
+			</tr>
+			<tr th:each="account: ${accounts}">
+				<td th:text="${account.id}"></td>
+				<td th:text="${account.username}"></td>
+				<td th:text="${account.accounttype}"></td>
+			</tr>
+		</table>
+	</main>
+	
+	</div>
+	<footer th:insert="layout.html :: footer"></footer>
+</body>
+</html>

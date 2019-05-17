@@ -1,0 +1,117 @@
+@charset "ISO-8859-1";
+
+/*
+Gebruik w3.css voor opmaak van de website - download css bestand: https://www.w3schools.com/w3css/w3css_downloads.asp
+In dit bestand overwrites van w3.css - generieke zaken en klassegebonden zaken
+*/
+
+/*
+Algemene overwrites/aanvullingen t.o.v. w3.css
+*/
+
+html, body, h1, h2, h3, h4, h5, h6 {
+	font-family: Book Antiqua;
+}
+
+body {
+	background: #b1dae7 /*url("/images/kaas.png") no-repeat fixed center*/;
+	/*margin: 0;*/
+}
+
+/*
+#header {
+	background-color: #3ca1c3;
+	color: black;
+	margin: 0;
+	padding: 20px;
+	text-align: center;
+	outline: black solid 0.5ch; -- deze stond oorspronkelijk uit
+}
+*/
+
+/*
+img.center {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+*/
+
+/*
+Specifieke overwrites (klassegebonden) t.o.v. w3.css
+*/
+
+.w3-table-all tr:nth-child(even) {
+	background-color: #b1dae7;
+}
+
+.w3-table-all th {
+	background-color: #3ca1c3;
+}
+
+/*
+.navbar {
+	background-color: #12303b;
+	color: white;
+}
+*/
+
+/*
+Aanvullingen op w3.css
+*/
+
+/*
+Kleuren in het blauwe palet (nu in w3.css)
+*/
+/*
+.w3-blue05, .w3-hover-blue05:hover {
+	color:#fff!important;
+	background-color:#061014!important
+}
+
+.w3-blue15, .w3-hover-blue15:hover {
+	color:#fff!important;
+	background-color:#12303b!important
+}
+
+.w3-blue50, .w3-hover-blue50:hover {
+	color:#000!important;
+	background-color:#3ca1c3!important
+}
+
+.w3-blue80, .w3-hover-blue80:hover {
+	color:#000!important;
+	background-color:#b1dae7!important
+}
+*/
+
+
+/*
+Handmatige navbar CSS
+*/
+/*
+.navbar ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: #12303b;
+	outline: black solid 0.5ch; -- deze stond oorspronkelijk uit
+}
+
+.navbar li {
+	float: left;
+}
+
+.navbar a {
+	display: block;
+	color: white;
+	text-align: center;
+	padding: 16px;
+	text-decoration: none;
+}
+
+.navbar a:hover {
+	background-color: #061014;
+}
+*/

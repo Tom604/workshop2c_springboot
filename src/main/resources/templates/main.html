@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Boer Piets kazen main</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" th:href="@{/w3.css}" />
+	<link rel="stylesheet" th:href="@{/styles.css}" />
+</head>
+<body>
+	<!-- Header + navigatiebalk -->
+	<header class="w3-top">
+		<div th:insert="layout.html :: header-main"></div>
+		<nav th:insert="layout.html :: navbar"></nav>
+	</header>
+	
+	<!-- Main -->
+	<main class="w3-container w3-padding-128">
+		<p>Hier komt nog een filmpje over kaas maken</p>
+	</main>
+	
+	<!-- Footer -->
+	<footer th:insert="layout.html :: footer"></footer>
+</body>
+</html>

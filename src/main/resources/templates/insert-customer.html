@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Boer Piets kazen klant aanmaken</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" th:href="@{/w3.css}" />
+	<link rel="stylesheet" th:href="@{/styles.css}" />
+</head>
+<body>
+	<header class="w3-top">
+		<div th:insert="layout.html :: header-customer"></div>
+	</header>
+	
+	<main class="w3-container w3-auto w3-padding-128" style="max-width:700px;">
+		<div class="w3-card">
+			<div class="w3-container w3-blue50">
+				<h3>Aanmelden als klant</h3>
+			</div>
+			<form class="w3-container" method="POST" th:action="@{/customer/insert-customer}" th:object="${klant}">
+				<p>
+					<label>Vul je voornaam in *</label>
+					<input class="w3-input w3-border w3-round" type="text" th:field="*{voornaam}" placeholder="Voornaam"/>
+				</p>
+				<p>
+					<label>Vul je tussenvoegsel in</label>
+					<input class="w3-input w3-border w3-round" type="text" th:field="*{tussenvoegsel}" placeholder="Tussenvoegsel"/>
+				</p>
+				<p>
+					<label>Vul je achternaam in *</label>
+					<input class="w3-input w3-border w3-round" type="text" th:field="*{achternaam}" placeholder="Achternaam"/>
+				<p>
+					<input type="submit" class="w3-btn w3-blue50 w3-hover-blue40 w3-round" value="OK" />
+					<input type="reset" class="w3-btn w3-blue50 w3-hover-blue40 w3-round" value="Reset" />
+					<span class="w3-right">* Verplichte velden</span>
+				</p>
+			</form>
+		</div>
+	
+	</main>
+	
+	<footer th:insert="layout.html :: footer"></footer>
+</body>
+</html>

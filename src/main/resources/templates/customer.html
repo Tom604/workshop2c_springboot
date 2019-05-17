@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Boer Piets kazen klant</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" th:href="@{/w3.css}" />
+	<link rel="stylesheet" th:href="@{/styles.css}" />
+</head>
+<body>
+	<nav th:insert="layout.html :: sidebar-customer"></nav>
+	
+	<header class="w3-top">
+		<div th:insert="layout.html :: header-customer"></div>
+		<nav th:insert="layout.html :: navbar"></nav>
+	</header>
+		
+	<div style="margin-left:12%">
+	
+	<main class="w3-container w3-auto w3-padding-128" style="max-width:900px;">
+		<h4>Draai die klanten eens rond</h4>
+		<br />
+		
+		<!-- Tabel die alle klanten weergeeft -->
+		<!-- TODO Hier ook nog adresgegevens weergeven? -->
+		<table class="w3-table-all w3-card">
+			<tr>
+				<th>Id</th>
+				<th>Voornaam</th>
+				<th>Tussenvoegsel</th>
+				<th>Achternaam</th>
+			</tr>
+			<tr th:each="klant: ${klanten}">
+				<td th:text="${klant.id}"></td>
+				<td th:text="${klant.voornaam}"></td>
+				<td th:text="${klant.tussenvoegsel}"></td>
+				<td th:text="${klant.achternaam}"></td>
+			</tr>
+		</table>
+	</main>
+	
+	</div>
+	<footer th:insert="layout.html :: footer"></footer>
+</body>
+</html>

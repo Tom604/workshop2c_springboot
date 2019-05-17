@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Boer Piets kazen home</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" th:href="@{/w3.css}" />
+	<link rel="stylesheet" th:href="@{/styles.css}" />
+</head>
+<body>
+	<header class="w3-top">
+		<div th:insert="layout.html :: header-home"></div>
+	</header>
+	
+	<main class="w3-container w3-display-middle">
+  		
+  		<div class="w3-center">
+  		<h1><a th:href="@{/login}" class="w3-button w3-blue50 w3-hover-blue40 w3-round w3-xlarge">Inloggen</a></h1>
+  		<br />
+  		<h1><a th:href="@{/customer/insert-customer}" class="w3-button w3-blue50 w3-hover-blue40 w3-round w3-xlarge">Aanmelden</a></h1>
+  		</div>
+  		
+	</main>
+	
+	<footer th:insert="layout.html :: footer"></footer>
+</body>
+</html>

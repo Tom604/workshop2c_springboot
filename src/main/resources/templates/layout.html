@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Navigatiemenu</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" th:href="@{/w3.css}" />
+	<link rel="stylesheet" th:href="@{/styles.css}" />
+</head>
+<body>
+	<!-- Sidebar (per domeintype) -->
+	<!-- Account, alleen zichtbaar voor admins -->
+	<nav th:fragment="sidebar-account" class="w3-sidebar w3-blue50 w3-bar-block w3-padding-128" style="width:12%">
+	  	<img th:insert="layout.html :: image-cheese" />
+	  	<br />
+	  	<a th:href="@{/account/insert-account}" class="w3-bar-item w3-button w3-hover-blue40 w3-border-top w3-border-bottom">Account toevoegen</a>
+	  	<a th:href="@{/account/update-account}" class="w3-bar-item w3-button w3-hover-blue40 w3-border-bottom">Account aanpassen</a>
+	  	<a th:href="@{/account/delete-account}" class="w3-bar-item w3-button w3-hover-blue40 w3-border-bottom">Account verwijderen</a>
+	</nav>
+	<!-- Customer, alleen zichtbaar voor klanten -->
+	<nav th:fragment="sidebar-customer" class="w3-sidebar w3-blue50 w3-bar-block w3-padding-128" style="width:12%">
+	  	<img th:insert="layout.html :: image-cheese" />
+	  	<br />
+	  	<a th:href="@{/customer/update-customer}" class="w3-bar-item w3-button w3-hover-blue40 w3-border-top w3-border-bottom">Gegevens aanpassen</a>
+	  	<a th:href="@{/customer/delete-customer}" class="w3-bar-item w3-button w3-hover-blue40 w3-border-bottom">Account verwijderen</a>
+	</nav>
+	
+	<!-- Header (per domeintype) -->
+	<!-- Home -->
+	<header th:fragment="header-home" class="w3-container w3-blue50 w3-center">
+		<h1>Welkom bij... Boer Piets kazen!</h1>
+	</header>
+	<!-- Login -->
+	<header th:fragment="header-login" class="w3-container w3-blue50 w3-center">
+		<h1>Inlogpagina</h1>
+	</header>
+	<!-- Main -->
+	<header th:fragment="header-main" class="w3-container w3-blue50 w3-center">
+		<h1>Hoofdpagina</h1>
+	</header>
+	<!-- Account -->
+	<header th:fragment="header-account" class="w3-container w3-blue50 w3-center">
+		<h1>Accountspagina</h1>
+	</header>
+	<!-- Customer -->
+	<header th:fragment="header-customer" class="w3-container w3-blue50 w3-center">
+		<h1>Klantenpagina</h1>
+	</header>
+	
+	<!-- Navigatiebalk (universeel) -->
+	<!-- TODO Voor de navigatiebalk: niet iedereen kan alle links zien, nog verwerken in de verwijzingen,
+	afhankelijk van hoe je ingelogd bent (welke soort account). -->
+	<nav th:fragment="navbar" class="w3-bar w3-blue15">
+		<a th:href="@{/account}" class="w3-bar-item w3-button w3-hover-blue05">Accounts</a>
+		<a th:href="@{/address}" class="w3-bar-item w3-button w3-hover-blue05">Adressen</a>
+		<a th:href="@{/article}" class="w3-bar-item w3-button w3-hover-blue05">Artikelen</a>
+		<a th:href="@{/order}" class="w3-bar-item w3-button w3-hover-blue05">Bestellingen</a>
+		<a th:href="@{/customer}" class="w3-bar-item w3-button w3-hover-blue05">Klanten</a>
+		<!-- TODO Informatie voor inlognaam halen uit logincontroller - statische velden? -->
+		<span class="w3-bar-item w3-right">Ingelogd als: </span>
+	</nav>
+	
+	<!-- Kaasafbeelding -->
+	<img th:fragment="image-cheese" th:src="@{/images/kaas.png}" class="w3-center-image" style="width:100%" />
+	
+	<!-- Footer (universeel) -->
+	<footer th:fragment="footer" class="w3-footer w3-bottom w3-blue15 w3-center">
+		©Copyright 2019 Boer Piet. Alle rechten voorbehouden.
+	</footer>
+	
+</body>
+</html>

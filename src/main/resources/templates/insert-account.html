@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Boer Piets kazen account aanmaken</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" th:href="@{/w3.css}" />
+	<link rel="stylesheet" th:href="@{/styles.css}" />
+</head>
+<body>
+	<nav th:insert="layout.html :: sidebar-account"></nav>
+	
+	<header class="w3-top">
+		<div th:insert="layout.html :: header-account"></div>
+		<nav th:insert="layout.html :: navbar"></nav>
+	</header>
+	
+	<div style="margin-left:12%">
+	
+	<main class="w3-container w3-auto w3-padding-128" style="max-width:700px;">
+		<h4>Welkom op de 'maak een nieuwe account aan' pagina!</h4>
+		<br />
+		
+		<!-- Hier een post form waarin twee velden (username en wachtwoord) gevuld kunnen worden met een nieuwe account -->
+		<!-- Gebruik th:action veld om met meerdere PostMappings te werken, die je allemaal afzonderlijk kunt implementeren
+		in je controller - de Post form in je template roept een PostMapping aan -->
+		<div class="w3-card">
+			<div class="w3-container w3-blue50">
+				<h3>Account toevoegen</h3>
+			</div>
+			<form class="w3-container" method="POST" th:action="@{/account/insert-account}" th:object="${account}">
+				<p>
+					<label>Vul je gebruikersnaam in</label>
+					<input class="w3-input w3-border w3-round" type="text" th:field="*{username}" placeholder="Gebruikersnaam"/>
+				</p>
+				<p>
+					<label>Vul je wachtwoord in</label>
+					<input class="w3-input w3-border w3-round" type="text" th:field="*{wachtwoord}" placeholder="Wachtwoord"/>
+				</p>
+					<label>Kies het accounttype</label>
+					<select class="w3-select w3-border w3-round" th:field="*{accounttype}">
+	    				<option value="admin">Admin</option>
+	    				<option value="medewerker">Medewerker</option>
+	    				<!-- Klantaccounts en -gegevens via klant kant  -->
+	    				<!-- <option value="klant">Klant</option> -->
+	  				</select>
+				<p>
+					<input type="submit" class="w3-btn w3-blue50 w3-hover-blue40 w3-round" value="Account toevoegen" />
+					<input type="reset" class="w3-btn w3-blue50 w3-hover-blue40 w3-round" value="Reset" />
+				</p>
+			</form>
+		</div>
+	</main>
+	
+	</div>
+	<footer th:insert="layout.html :: footer"></footer>
+</body>
+</html>

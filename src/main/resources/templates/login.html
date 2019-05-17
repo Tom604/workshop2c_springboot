@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Boer Piets kazen login</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" th:href="@{/w3.css}" />
+	<link rel="stylesheet" th:href="@{/styles.css}" />
+</head>
+<body>
+	<header class="w3-top">
+		<div th:insert="layout.html :: header-login"></div>
+	</header>
+	
+	<main class="w3-container w3-auto w3-padding-128" style="max-width:700px;">
+		<h4>Log in met je gebruikersnaam en wachtwoord</h4>
+	
+	   	<img th:src="@{/images/kaasklein.png}" class="w3-center-image w3-card" />
+		<br />
+
+		<div class="w3-card">
+			<div class="w3-container w3-blue50">
+				<h3>Inloggen</h3>
+			</div>
+		   	<form class="w3-container" method="POST" th:object="${account}">
+		    	<div class="grid">
+			  		<p>
+			  			<label>Gebruikersnaam aub: </label>	  
+			  			<input class="w3-input w3-border w3-round" type="text" th:field="*{username}" placeholder="Gebruikersnaam" />
+			  		</p>
+			  		<p>
+			  			<label>Wachtwoord aub: </label>
+			  			<input class="w3-input w3-border w3-round" type="text" th:field="*{wachtwoord}" placeholder="Wachtwoord" />
+			  		</p>
+			  		<p>
+			  			<input type="submit" class="w3-btn w3-blue50 w3-hover-blue40 w3-round" value="Inloggen"/>
+			  		</p>
+			  		<p>
+			  			<div>
+			  				<span class="validationError" th:text="${failedLogin}"></span>
+			  			</div>
+			  		</p>
+				</div>
+			</form>
+		</div>
+	</main>
+	
+	<footer th:insert="layout.html :: footer"></footer>
+</body>
+</html>
