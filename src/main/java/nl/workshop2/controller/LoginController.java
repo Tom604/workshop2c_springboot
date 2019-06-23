@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
 import nl.workshop2.data.AccountRepository;
 import nl.workshop2.domain.Account;
@@ -22,12 +23,12 @@ import nl.workshop2.domain.Account;
  * 
  * Volgens doc bij @SessionAttributes handig bij user authentication - is permanent
  */
-@SessionAttributes("account")
+@SessionAttributes("loginAccount")
 public class LoginController {
 
 	/*
 	 * In deze controller nog state vasthouden in sessie (statische velden?):
-	 * gebruikersnaam, accounttype en wachtwoord (zoals in eerdere consoleapplicatie).
+	 * gebruikersnaam, accounttype en wachtwoord (zoals in eerdere consoleapplicatie). - Gebeurt nu met sessionattributes.
 	 */
 	
 	private final AccountRepository accountRepo;
@@ -37,14 +38,20 @@ public class LoginController {
 		this.accountRepo = accountRepo;
 	}
 	
-//	@ModelAttribute("account")
-//	private Account account() {
-//		return new Account();
-//	}
+	/**
+	 * Deze methode initialiseert het sessieattribuut.
+	 * 
+	 * @return
+	 */
+	@ModelAttribute("loginAccount")
+	private Account loginAccount() {
+		return new Account();
+	}
 	
-	//Onderstaande modelattribute parameter is hetzelfde als bovenstaande methode - geen instantiëring via de methode nodig dus
 	@GetMapping
-	private String loginForm(@ModelAttribute("account") Account account) {
+	private String loginForm(SessionStatus session, Model model) { //Gebruik sessionstatus om loginaccount te discarden
+		session.setComplete();
+		System.out.println(model.toString());
 		return "login";
 	}
 	
@@ -53,7 +60,10 @@ public class LoginController {
 		
 		Account retrievedAccount = accountRepo.findByUsername(account.getUsername());
 		
+		System.out.println(retrievedAccount.toString());
+		
 		if (retrievedAccount != null && account.getWachtwoord().equals(retrievedAccount.getWachtwoord())) {
+			model.addAttribute("loginAccount", retrievedAccount);
 			return "main";
 		} else {
 			model.addAttribute("failedLogin", "Beter je best doen");

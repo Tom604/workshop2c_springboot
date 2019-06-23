@@ -10,10 +10,10 @@ import org.springframework.stereotype.Component;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
-import org.springframework.web.bind.annotation.SessionAttributes;
 
 import nl.workshop2.data.AccountRepository;
 import nl.workshop2.domain.Account;
@@ -25,13 +25,6 @@ import nl.workshop2.domain.Klant;
 
 @Component
 @RequestMapping("/account")
-
-/*
- * Moet deze annotatie hier ook staan (staat ook in logincontroller)? -
- * Niet volgens https://www.boraji.com/spring-mvc-4-sessionattributes-example - nalezen!
- * 
- */
-@SessionAttributes("account")
 public class AccountController {
 
 	private AccountRepository accountRepo;
@@ -45,16 +38,19 @@ public class AccountController {
 	 * Deze GetMapping geeft een lijst van accounts.
 	 */
 	@GetMapping
-	private String accountInfo(@SessionAttribute Account account, Model model) {
+	private String getAccountList(@SessionAttribute Account loginAccount, Model model) {
 		
 		//TODO hier een if voor wanneer het sessieattribuut null is - niet ingelogd is terug naar home
+		//TODO geeft nu al een foutmelding als je direct naar /account wilt surfen (missend sessieattribuut), dus if is wellicht overbodig
 		/*
 		 * TODO alle gets dienen deze if te ondersteunen, behalve die van het klant aanmelden proces (insert-customer,
 		 * insert-customer-account en insert-customer-address).
 		 */
-		if (account == null) {
+		if (loginAccount == null) {
 			return "home";
 		}
+		
+		System.out.println(loginAccount.toString() + " JAJA");
 		
 		List<Account> accounts = new ArrayList<Account>();
 		accountRepo.findAll().forEach(e -> accounts.add(e));
@@ -74,7 +70,12 @@ public class AccountController {
 	
 	//TODO getmapping voor account specifiek voor klant (andere layout in html - vrij kaal, alleen header, footer en form)
 	@GetMapping("/insert-customer-account")
-	private String insertCustomerAccount(Account account) {
+	private String insertCustomerAccount(Account account, @ModelAttribute("nieuweKlant") Klant nieuweKlant) {
+		
+		account.setAccounttype("klant");
+		account.setKlant(nieuweKlant);
+		
+		System.out.println(nieuweKlant);
 		
 		return "insert-customer-account";
 	}
@@ -89,7 +90,7 @@ public class AccountController {
 			return "account";
 		}
 		
-		Account savedAccount = accountRepo.save(account); 
+		/*Account savedAccount =*/ accountRepo.save(account); 
 		
 		/* Eerst klant aanmaken, dan pas account
 		//TODO if maken voor accounttype
@@ -108,12 +109,12 @@ public class AccountController {
 	private String insertCustomerAccountAction(@Valid Account account, @Valid Klant klant, BindingResult result) {
 		
 		if (result.hasErrors()) {
-			return "account";
+			return "home";
 		}
 		
-		//Hoe koppel ik de klant (met name de klant_id) aan de account? Moet dit niet al in de getmapping gebeuren?
-		account.setKlant(klant);
-		account.setAccounttype("klant");
+//		//Hoe koppel ik de klant (met name de klant_id) aan de account? Moet dit niet al in de getmapping gebeuren?
+//		account.setKlant(klant);
+//		account.setAccounttype("klant");
 		accountRepo.save(account);
 		
 		return "redirect:/insert-customer-address";
