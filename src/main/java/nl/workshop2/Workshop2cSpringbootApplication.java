@@ -11,6 +11,11 @@ public class Workshop2cSpringbootApplication {
 	}
 	
 	/*
+	 * TODO onderstaande methode implementeren met data uit testdata.sql. Vergeet niet alle benodigde repo's te zetten.
+	 * Voordeel: de DB wordt elke keer als de app start opgebouwd en alle aanpassingen in het domein kunnen zo dus meegenomen worden.
+	 */
+	
+	/*
 	 * Methode om data te zetten in je database, zoals nu in het mysql_workshop2_testdata.sql script
 	 * 
 	@Bean

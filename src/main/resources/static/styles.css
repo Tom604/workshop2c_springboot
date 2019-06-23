@@ -19,25 +19,6 @@ body {
 }
 
 /*
-#header {
-	background-color: #3ca1c3;
-	color: black;
-	margin: 0;
-	padding: 20px;
-	text-align: center;
-	outline: black solid 0.5ch; -- deze stond oorspronkelijk uit
-}
-*/
-
-/*
-img.center {
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
-}
-*/
-
-/*
 Specifieke overwrites (klassegebonden) t.o.v. w3.css
 */
 
@@ -49,69 +30,14 @@ Specifieke overwrites (klassegebonden) t.o.v. w3.css
 	background-color: #3ca1c3;
 }
 
-/*
-.navbar {
-	background-color: #12303b;
-	color: white;
-}
-*/
-
-/*
-Aanvullingen op w3.css
-*/
-
-/*
-Kleuren in het blauwe palet (nu in w3.css)
-*/
-/*
-.w3-blue05, .w3-hover-blue05:hover {
-	color:#fff!important;
-	background-color:#061014!important
-}
-
-.w3-blue15, .w3-hover-blue15:hover {
-	color:#fff!important;
-	background-color:#12303b!important
-}
-
-.w3-blue50, .w3-hover-blue50:hover {
-	color:#000!important;
-	background-color:#3ca1c3!important
-}
-
-.w3-blue80, .w3-hover-blue80:hover {
-	color:#000!important;
-	background-color:#b1dae7!important
-}
-*/
-
-
-/*
-Handmatige navbar CSS
-*/
-/*
-.navbar ul {
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
-	overflow: hidden;
-	background-color: #12303b;
-	outline: black solid 0.5ch; -- deze stond oorspronkelijk uit
-}
-
-.navbar li {
-	float: left;
-}
-
-.navbar a {
-	display: block;
-	color: white;
-	text-align: center;
-	padding: 16px;
-	text-decoration: none;
-}
-
-.navbar a:hover {
-	background-color: #061014;
-}
-*/
+/* Additions to framework (new classes) - May 2019 by Tom de Vos */
+/* Layout */
+.w3-center-image{display:block;margin-left:auto;margin-right:auto;}
+.w3-padding-128{padding-top:128px!important;padding-bottom:128px!important}
+.w3-padding-256{padding-top:256px!important;padding-bottom:256px!important}
+/* Colors - Specifically for the workshop2c_springboot project */
+.w3-blue05,.w3-hover-blue05:hover{color:#fff!important;background-color:#061014!important}
+.w3-blue15,.w3-hover-blue15:hover{color:#fff!important;background-color:#12303b!important}
+.w3-blue40,.w3-hover-blue40:hover{color:#fff!important;background-color:#30819c!important}
+.w3-blue50,.w3-hover-blue50:hover{color:#000!important;background-color:#3ca1c3!important}
+.w3-blue80,.w3-hover-blue80:hover{color:#000!important;background-color:#b1dae7!important}

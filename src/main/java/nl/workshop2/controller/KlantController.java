@@ -30,7 +30,7 @@ public class KlantController {
 	
 	// Deze GetMapping geeft een lijst van klanten.
 	@GetMapping
-	private String klantInfo(/*@SessionAttribute Account account,*/ Model model) {
+	private String getKlantList(/*@SessionAttribute Account account,*/ Model model) {
 		
 		//TODO hier een if voor wanneer het sessieattribuut null is - niet ingelogd is terug naar home
 		/*
@@ -56,14 +56,22 @@ public class KlantController {
 		return "insert-customer";
 	}
 	
+	/*
+	 * Accounttype en klant worden toegevoegd aan account, maar nog niet naar database weggeschreven (username en wachtwoord zijn nog nodig)
+	 * Gebruik ik een addflashattribute of een addattribute hier? Werkt nu met flashattribute.
+	 */
 	@PostMapping("/insert-customer")
-	private String insertKlantAction(@Valid Klant klant, BindingResult result, RedirectAttributes redirectAttributes) {
+	private String insertKlantAction(@Valid Klant klant, /*Account account,*/ BindingResult result, RedirectAttributes redirectAttributes) {
 		
 		if (result.hasErrors()) {
 			return "account";
 		}
 		
-		redirectAttributes.addFlashAttribute("newCustomer", klantRepo.save(klant));
+//		account.setAccounttype("klant");
+//		account.setKlant(klantRepo.save(klant));
+		redirectAttributes.addFlashAttribute("nieuweKlant", klant);
+		
+		System.out.println(redirectAttributes.getFlashAttributes());
 		
 		return "redirect:/account/insert-customer-account";
 	}
